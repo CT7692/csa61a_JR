@@ -1,4 +1,4 @@
-;This is a predicate that iterates through a list of numbers
+;This is a predicate that recursively iterates through a list of numbers
 ;that returns true if they're in ascending order and false otherwise.
 
 (define (orderIter numList)
