@@ -5,8 +5,7 @@
   (cond ((< (first numList) (last numList)) #t)
         ((< (first numList) (first (bf numList)))
          (orderIter (bf numList)))
-        ((> (first numList) (first (bf numList)))
-         #f)))
+        ((> (first numList) (first (bf numList))) #f)))
 
 (define (ordered? myList)
   (orderIter myList))
