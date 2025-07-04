@@ -70,3 +70,9 @@
     (+ (cube x)
        (* a (square x))
        (* b x) c)))
+
+;Exercise 1.41: Task was to define a procedure "double" that
+;takes a procedure of one argument as an argument and apply it twice.
+(define (double f)
+  (lambda (x)
+    (f (f x))))
