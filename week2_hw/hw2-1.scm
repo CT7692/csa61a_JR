@@ -76,3 +76,12 @@
 (define (double f)
   (lambda (x)
     (f (f x))))
+
+;Exercise 1.43: Task was to define a procedure "repeated" that
+;takes another procedure and an integer "times" as arguments
+;applies the passes the parameter procedure a given amount of times.
+(define (repeated f times)
+  (lambda (x)
+    (if (= times 0)
+        x
+        (f ((repeated f (- times 1)) x)))))
