@@ -85,3 +85,42 @@
     (if (= times 0)
         x
         (f ((repeated f (- times 1)) x)))))
+
+;Exercise 1.46: Task was to create a procedure to iteratively
+;improve mathematical operations that iterate over approximations
+;to find the most accurate result. Examples such as finding the
+;square root or finding a fixed point. It generalizes these
+;operations for procedural abstraction. It would look like this:
+(define (iterativeImprove gEnough? improve)
+  (define (try guess)
+    (if (gEnough? guess)
+        guess
+        (try (improve guess))))
+  try)
+
+;Iterative Square Root
+(define (newSqrt n)
+  (define (average a b)
+    (/ (+ a b) 2))
+  (define square
+    (lambda (x) (* x x)))
+  
+  (define (enough? guess)
+    (< (abs (- (square guess) n)) 0.00001))
+  
+  (define (improve guess)
+    (average guess (/ n guess)))
+  
+  ((iterativeImprove enough? improve) n))
+
+;Iterative Fixed Point
+(define (newFixed f firstGuess)
+  
+  (define (enough? guess)
+    (define next (f guess))
+    (< (abs (- guess next)) 0.00001))
+
+  (define (improve guess)
+    (f guess))
+
+  ((iterativeImprove enough? improve) firstGuess))
