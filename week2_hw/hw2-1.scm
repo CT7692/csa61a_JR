@@ -38,8 +38,7 @@
 ;the base case occurs, a "term" function, the lower bound
 ;of the range: "a", a "next" function to update "a", and
 ;lastly the end of the range, "b".
-(define (accumulate
-         combiner nullValue term a next b)
+(define (accumulate combiner nullValue term a next b)
   (if (> a b)
       nullValue
       (combiner (term a)
@@ -51,8 +50,7 @@
 ;does the same action as the function above, but only if the
 ;predicate passed as an argument is fulfilled. Such that this 
 ;function would be "filtered accumulation".
-(define (filteredAccumulate pred comb nullValue
-         term a next b)
+(define (filteredAccumulate pred comb nullValue term a next b)
   (cond
     ((> a b) nullValue)
     ((pred a) (comb (term a)
