@@ -62,3 +62,13 @@
     (else (filteredAccumulate
            pred comb nullValue
            term (next a) next b))))
+
+;Exercise 1.40: Task was to define a procedure "cubic" that works
+;with Newton's Method procedures defined in a different project 
+;to approximate the zeros of:
+; x^3 + ax^2 + bx + c
+(define (cubic a b c)
+  (lambda (x)
+    (+ (cube x)
+       (* a (square x))
+       (* b x) c)))
